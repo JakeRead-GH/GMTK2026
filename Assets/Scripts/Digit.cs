@@ -6,6 +6,8 @@ public class Digit : MonoBehaviour
 {
     [SerializeField] DigitSegment[] digitSegments;
     [SerializeField] Color litColour;
+    [SerializeField] int boundarySegments;
+
     private static Dictionary<string, string> displayToValMapping = new Dictionary<string, string> 
     { 
         { "012345", "0" }, 
@@ -43,9 +45,15 @@ public class Digit : MonoBehaviour
             InitialiseSegment(digitSegments[i]);
         }
 
-        setPattern("8");
+        setPattern(valToDisplayMapping["7"]);
+
+        print(-1 % 6);
         
         print(GetPattern());
+
+        rotateBoundary(1, 1);
+
+        //toggleAll();
 
     }
 
@@ -78,9 +86,8 @@ public class Digit : MonoBehaviour
     public void setPattern(string pattern)
     {
         turnOffDisplay();
-        string stringSegIdxs = valToDisplayMapping[pattern];
-        foreach (char chIdx in stringSegIdxs) { 
-            int segIdx = chIdx - '0';
+        foreach (char chIdx in pattern) { 
+            int segIdx = charToInt(chIdx);
             digitSegments[segIdx].ToggleOn();
         }
     }
@@ -90,5 +97,52 @@ public class Digit : MonoBehaviour
         foreach (DigitSegment segment in digitSegments) {
             segment.ToggleOff();
         } 
+    }
+
+    public void toggleAll()
+    {
+        foreach (DigitSegment segment in digitSegments)
+        {
+            if (segment.IsLit())
+            {
+                segment.ToggleOff();
+            }
+            else
+            {
+                segment.ToggleOn();
+            }
+        }
+    }
+
+    public void rotateBoundary(int steps, int dir)
+    {
+        string newPattern = string.Empty;
+        string prevPattern = GetPattern();
+        int prevIdx;
+        int newIdx;
+
+        foreach (char chIdx in prevPattern)
+        {
+            prevIdx = charToInt(chIdx);
+
+
+            newIdx = mod((prevIdx + steps * dir), boundarySegments);
+            
+            newPattern += newIdx.ToString();
+        }
+
+        setPattern(newPattern);
+
+    }
+
+    //Helper functions
+    int charToInt(char ch)
+    {
+        return ch - '0';
+    }
+
+    int mod(int x, int m)
+    {
+        return (x % m + m) % m;
     }
 }
