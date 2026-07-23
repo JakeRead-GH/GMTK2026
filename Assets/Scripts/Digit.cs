@@ -1,9 +1,37 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Digit : MonoBehaviour
 {
     [SerializeField] DigitSegment[] digitSegments;
     [SerializeField] Color litColour;
+    private static Dictionary<string, string> displayToValMapping = new Dictionary<string, string> 
+    { 
+        { "012345", "0" }, 
+        { "12", "1" }, 
+        { "01346", "2" }, 
+        { "01236", "3" }, 
+        { "1256", "4" }, 
+        { "02356", "5" }, 
+        { "023456", "6" }, 
+        { "012", "7" }, 
+        { "0123456", "8" }, 
+        { "012356" , "9" } 
+    };
+    private static Dictionary<string, string> valToDisplayMapping = new Dictionary<string, string>
+    {
+        { "0", "012345"},
+        { "1", "12"},
+        { "2", "01346" },
+        { "3", "01236" },
+        { "4", "1256" },
+        { "5", "02356" },
+        { "6", "023456" },
+        { "7", "012" },
+        { "8", "0123456" },
+        { "9", "012356" }
+    };
 
     //sorry for my dogshit coding. tired as fuck. also just shit
 
@@ -14,7 +42,11 @@ public class Digit : MonoBehaviour
         for (int i = 0; i < digitSegments.Length; i++) { 
             InitialiseSegment(digitSegments[i]);
         }
-        digitSegments[0].ToggleOn();
+
+        setPattern("8");
+        
+        print(GetPattern());
+
     }
 
     // Update is called once per frame
@@ -31,6 +63,32 @@ public class Digit : MonoBehaviour
         return digitSegments[segmentNumber];
     }
 
+    public string GetPattern()
+    {
+        string pattern = string.Empty;
+        for (int i = 0; i < digitSegments.Length; i++)
+        {
+            DigitSegment currSegment = digitSegments[i];
+            if (GetSegment(i).IsLit())
+                pattern += i.ToString();
+        }
+        return pattern;
+    }
 
+    public void setPattern(string pattern)
+    {
+        turnOffDisplay();
+        string stringSegIdxs = valToDisplayMapping[pattern];
+        foreach (char chIdx in stringSegIdxs) { 
+            int segIdx = chIdx - '0';
+            digitSegments[segIdx].ToggleOn();
+        }
+    }
 
+    public void turnOffDisplay()
+    {
+        foreach (DigitSegment segment in digitSegments) {
+            segment.ToggleOff();
+        } 
+    }
 }
