@@ -15,8 +15,6 @@ public class Digit : MonoBehaviour
             InitialiseSegment(digitSegments[i]);
         }
         digitSegments[0].ToggleOn();
-        digitSegments[1].ToggleOn();
-        digitSegments[6].ToggleOn();
     }
 
     // Update is called once per frame
