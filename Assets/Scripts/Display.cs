@@ -18,11 +18,6 @@ public class Display : MonoBehaviour
 
     void Start()
     {
-        //digits[0].SetPattern("12");
-        //digits[1].SetPattern("0123456");
-
-        //digits[0].SwapWith(digits[1]);
-        //digits[0].CopyFrom(digits[1]);
         SetInitialState();
     }
 
@@ -46,13 +41,6 @@ public class Display : MonoBehaviour
             digits[digitIdx].SetPatternFromValue(digitValue);
             digitIdx++;
         }
-        /*for (int i = 0; i < digits.Length; i++) { 
-            pattern = levelDisplayInitialStates.GetValueOrDefault(levelName);
-            if (pattern == null) { 
-                continue;
-            }
-            digits[i].SetPatternFromValue(levelDisplayInitialStates.GetValueOrDefault(levelName));
-        }*/
     }
 
 }

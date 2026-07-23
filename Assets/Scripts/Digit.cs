@@ -84,6 +84,11 @@ public class Digit : MonoBehaviour
         return digitSegments[segmentNumber];
     }
 
+    public int GetNumOfSegments()
+    {
+        return digitSegments.Length;
+    }
+
     public string GetPattern()
     {
         string pattern = string.Empty;
