@@ -3,6 +3,7 @@ using UnityEngine;
 
 public sealed class ActionSelectionManager : MonoBehaviour
 {
+
     private readonly List<Digit> selectedTargets = new();
 
     private ActionCard selectedCard;
@@ -48,6 +49,8 @@ public sealed class ActionSelectionManager : MonoBehaviour
         }
 
         ActionCard cardBeingUsed = selectedCard;
+        StateManager.Instance.SetLastUsedAction(cardBeingUsed);
+        StateManager.Instance.TakeSnapshot();
         bool actionSucceeded = cardBeingUsed.TryUse(selectedTargets);
 
         selectedTargets.Clear();

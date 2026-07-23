@@ -31,7 +31,8 @@ public sealed class ActionCard : MonoBehaviour
 
     private void Awake()
     {
-        if (button == null) {
+        if (button == null)
+        {
             button = GetComponent<Button>();
         }
 
@@ -41,18 +42,25 @@ public sealed class ActionCard : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (button != null) {
+        if (button != null)
+        {
             button.onClick.RemoveListener(OnCardClicked);
         }
+    }
+
+    public void IncrementRemainingUses() 
+    { 
+        remainingUses++;
     }
 
     public void Initialize(
         DigitAction newAction,
         int startingUses,
-        ActionSelectionManager manager
+        ActionSelectionManager actionManager
     )
     {
-        if (newAction == null || manager == null) {
+        if (newAction == null || actionManager == null)
+        {
             Debug.LogError(
                 $"ActionCard {name} received invalid initialization data.",
                 this
@@ -63,25 +71,29 @@ public sealed class ActionCard : MonoBehaviour
 
         action = newAction;
         remainingUses = Mathf.Max(0, startingUses);
-        selectionManager = manager;
+        selectionManager = actionManager;
         isSelected = false;
         isInitialized = true;
 
-        if (actionIcon != null) {
+        if (actionIcon != null)
+        {
             actionIcon.sprite = action.CardIcon;
             actionIcon.enabled = action.CardIcon != null;
             actionIcon.preserveAspect = true;
         }
 
-        if (segmentPreview != null) {
+        if (segmentPreview != null)
+        {
             segmentPreview.SetMask(action.AffectedSegments);
         }
 
         RefreshVisuals();
     }
 
-    private void OnCardClicked() {
-        if (!isInitialized || !HasUsesRemaining) {
+    private void OnCardClicked()
+    {
+        if (!isInitialized || !HasUsesRemaining)
+        {
             return;
         }
 
@@ -90,17 +102,20 @@ public sealed class ActionCard : MonoBehaviour
 
     public bool TryUse(IReadOnlyList<Digit> targets)
     {
-        if (!isInitialized || !HasUsesRemaining) {
+        if (!isInitialized || !HasUsesRemaining)
+        {
             return false;
         }
 
-        if (!action.TryApply(targets)) {
+        if (!action.TryApply(targets))
+        {
             return false;
         }
 
         remainingUses--;
 
-        if (!HasUsesRemaining) {
+        if (!HasUsesRemaining)
+        {
             selectionManager.ClearSelection(this);
         }
 
@@ -118,23 +133,29 @@ public sealed class ActionCard : MonoBehaviour
     {
         bool usable = isInitialized && HasUsesRemaining;
 
-        if (button != null) {
+        if (button != null)
+        {
             button.interactable = usable;
         }
 
-        if (remainingUsesText != null) {
+        if (remainingUsesText != null)
+        {
             remainingUsesText.text = remainingUses.ToString();
         }
 
-        if (backgroundImage == null) {
+        if (backgroundImage == null)
+        {
             return;
         }
 
-        if (!usable) {
+        if (!usable)
+        {
             backgroundImage.sprite = exhaustedSprite != null
                 ? exhaustedSprite
                 : normalSprite;
-        } else {
+        }
+        else
+        {
             backgroundImage.sprite = isSelected
                 ? selectedSprite
                 : normalSprite;
