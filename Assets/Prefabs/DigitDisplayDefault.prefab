@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8786611670657670445}
   - component: {fileID: 2090446685875452382}
   m_Layer: 0
-  m_Name: DigitSegmentDefault02
+  m_Name: DigitSegmentDefault01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 6669473421942391200}
   - component: {fileID: 5317535076581183591}
   m_Layer: 0
-  m_Name: DigitSegmentDefault07
+  m_Name: DigitSegmentDefault06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 7095988141104281367}
   - component: {fileID: 6229585400228062480}
   m_Layer: 0
-  m_Name: DigitSegmentDefault01
+  m_Name: DigitSegmentDefault00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7797446957612322492}
   - component: {fileID: 3184624538890832534}
   m_Layer: 0
-  m_Name: DigitSegmentDefault03
+  m_Name: DigitSegmentDefault02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 5220051503981770894}
   - component: {fileID: 5685618587763955378}
   m_Layer: 0
-  m_Name: DigitSegmentDefault06
+  m_Name: DigitSegmentDefault05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 3407227551670463251}
   - component: {fileID: 23258388407868359}
   m_Layer: 0
-  m_Name: DigitSegmentDefault05
+  m_Name: DigitSegmentDefault04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 4482462092012018012}
   - component: {fileID: 2633522701798857463}
   m_Layer: 0
-  m_Name: DigitSegmentDefault04
+  m_Name: DigitSegmentDefault03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
