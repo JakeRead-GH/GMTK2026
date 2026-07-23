@@ -6,7 +6,6 @@ public class Digit : MonoBehaviour
 {
     [SerializeField] DigitSegment[] digitSegments;
     [SerializeField] Color litColour;
-    [SerializeField] int boundarySegments;
 
     private static Dictionary<string, string> displayToValMapping = new Dictionary<string, string> 
     { 
@@ -126,23 +125,17 @@ public class Digit : MonoBehaviour
         }
     }
 
-    public void RotateBoundary(int steps, int direction)
+    private static readonly int[] BoundaryCycle =
     {
-        string previousPattern = GetPattern();
-        string newPattern = string.Empty;
+        0, 1, 2, 3, 4, 5
+    };
 
-        foreach (char character in previousPattern)
-        {
-            int previousIndex = CharToInt(character);
-
-            int newIndex = previousIndex < boundarySegments
-                ? Mod(previousIndex + steps * direction, boundarySegments)
-                : previousIndex;
-
-            newPattern += newIndex.ToString();
-        }
-
-        SetPattern(newPattern);
+    public bool RotateBoundary(int steps, int direction)
+    {
+        return RotateSegments(
+            BoundaryCycle,
+            steps * direction
+        );
     }
     
     public void SwapWith(Digit other)
@@ -156,6 +149,191 @@ public class Digit : MonoBehaviour
     public void CopyFrom(Digit other)
     {
         SetPattern(other.GetPattern());
+    }
+        
+    public int SegmentCount => digitSegments.Length;
+
+    public SegmentMask GetLitMask()
+    {
+        SegmentMask result = SegmentMask.None;
+
+        int count = Mathf.Min(digitSegments.Length, 7);
+
+        for (int index = 0; index < count; index++)
+        {
+            if (digitSegments[index].IsLit())
+            {
+                result |= (SegmentMask)(1 << index);
+            }
+        }
+
+        return result;
+    }
+
+    public void SetLitMask(SegmentMask mask)
+    {
+        int count = Mathf.Min(digitSegments.Length, 7);
+
+        for (int index = 0; index < count; index++)
+        {
+            SegmentMask flag = (SegmentMask)(1 << index);
+            digitSegments[index].SetLit((mask & flag) != 0);
+        }
+    }
+
+    public bool ToggleSegments(SegmentMask mask)
+    {
+        bool changedAny = false;
+
+        int count = Mathf.Min(digitSegments.Length, 7);
+
+        for (int index = 0; index < count; index++)
+        {
+            SegmentMask flag = (SegmentMask)(1 << index);
+
+            if ((mask & flag) == 0)
+            {
+                continue;
+            }
+
+            digitSegments[index].Toggle();
+            changedAny = true;
+        }
+
+        return changedAny;
+    }
+
+    public bool SwapSegmentsWith(Digit other, SegmentMask mask)
+    {
+        if (
+            other == null ||
+            other == this ||
+            other.digitSegments.Length != digitSegments.Length
+        )
+        {
+            return false;
+        }
+
+        bool swappedAny = false;
+
+        int count = Mathf.Min(digitSegments.Length, 7);
+
+        for (int index = 0; index < count; index++)
+        {
+            SegmentMask flag = (SegmentMask)(1 << index);
+
+            if ((mask & flag) == 0)
+            {
+                continue;
+            }
+
+            digitSegments[index].SwapWith(other.digitSegments[index]);
+            swappedAny = true;
+        }
+
+        return swappedAny;
+    }
+
+    public bool CopySegmentsFrom(Digit other, SegmentMask mask)
+    {
+        if (
+            other == null ||
+            other.digitSegments.Length != digitSegments.Length
+        )
+        {
+            return false;
+        }
+
+        bool copiedAny = false;
+
+        int count = Mathf.Min(digitSegments.Length, 7);
+
+        for (int index = 0; index < count; index++)
+        {
+            SegmentMask flag = (SegmentMask)(1 << index);
+
+            if ((mask & flag) == 0)
+            {
+                continue;
+            }
+
+            digitSegments[index].SetLit(
+                other.digitSegments[index].IsLit()
+            );
+
+            copiedAny = true;
+        }
+
+        return copiedAny;
+    }
+    
+    public bool RotateSegments(
+        IReadOnlyList<int> cycle,
+        int signedSteps
+    )
+    {
+        if (!IsValidSegmentCycle(cycle))
+        {
+            return false;
+        }
+
+        int count = cycle.Count;
+        int offset = Mod(signedSteps, count);
+
+        if (offset == 0)
+        {
+            return false;
+        }
+
+        bool[] previousStates = new bool[count];
+
+        for (int position = 0; position < count; position++)
+        {
+            int segmentIndex = cycle[position];
+            previousStates[position] =
+                digitSegments[segmentIndex].IsLit();
+        }
+
+        for (int sourcePosition = 0;
+             sourcePosition < count;
+             sourcePosition++)
+        {
+            int destinationPosition =
+                Mod(sourcePosition + offset, count);
+
+            int destinationSegment =
+                cycle[destinationPosition];
+
+            digitSegments[destinationSegment].SetLit(
+                previousStates[sourcePosition]
+            );
+        }
+
+        return true;
+    }
+
+    private bool IsValidSegmentCycle(IReadOnlyList<int> cycle)
+    {
+        if (cycle == null || cycle.Count < 2)
+        {
+            return false;
+        }
+
+        HashSet<int> seenIndices = new();
+
+        foreach (int index in cycle)
+        {
+            if (
+                index < 0 ||
+                index >= digitSegments.Length ||
+                !seenIndices.Add(index)
+            )
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     //Helper functions
