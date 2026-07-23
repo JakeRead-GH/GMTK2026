@@ -44,17 +44,6 @@ public class Digit : MonoBehaviour
         for (int i = 0; i < digitSegments.Length; i++) { 
             InitialiseSegment(digitSegments[i]);
         }
-
-        setPattern(valToDisplayMapping["7"]);
-
-        print(-1 % 6);
-        
-        print(GetPattern());
-
-        rotateBoundary(1, 1);
-
-        //toggleAll();
-
     }
 
     // Update is called once per frame
@@ -83,23 +72,23 @@ public class Digit : MonoBehaviour
         return pattern;
     }
 
-    public void setPattern(string pattern)
+    public void SetPattern(string pattern)
     {
-        turnOffDisplay();
+        TurnOffDigit();
         foreach (char chIdx in pattern) { 
             int segIdx = charToInt(chIdx);
             digitSegments[segIdx].ToggleOn();
         }
     }
 
-    public void turnOffDisplay()
+    public void TurnOffDigit()
     {
         foreach (DigitSegment segment in digitSegments) {
             segment.ToggleOff();
         } 
     }
 
-    public void toggleAll()
+    public void ToggleAll()
     {
         foreach (DigitSegment segment in digitSegments)
         {
@@ -114,7 +103,7 @@ public class Digit : MonoBehaviour
         }
     }
 
-    public void rotateBoundary(int steps, int dir)
+    public void RotateBoundary(int steps, int dir)
     {
         string newPattern = string.Empty;
         string prevPattern = GetPattern();
@@ -131,8 +120,21 @@ public class Digit : MonoBehaviour
             newPattern += newIdx.ToString();
         }
 
-        setPattern(newPattern);
+        SetPattern(newPattern);
 
+    }
+    
+    public void SwapWith(Digit other)
+    {
+        string tempPattern = GetPattern();
+        SetPattern(other.GetPattern());
+        other.SetPattern(tempPattern);
+        
+    }
+
+    public void CopyFrom(Digit other)
+    {
+        SetPattern(other.GetPattern());
     }
 
     //Helper functions
@@ -145,4 +147,6 @@ public class Digit : MonoBehaviour
     {
         return (x % m + m) % m;
     }
+
+    
 }

@@ -34,13 +34,25 @@ public class DigitSegment : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.black;
     }
 
+    public void SetLit(bool isLit)
+    {
+        if(isLit) { 
+            ToggleOn(); 
+        }
+        else { 
+            ToggleOff(); 
+        }
+    }
+
     public void SetLitColour(Color colour) { 
         litColour = colour;
-        if (isLit) { 
-            ToggleOn();
-        }
-        else {
-            ToggleOff();
-        }
+        SetLit(isLit);
+    }
+
+    public void SwapWith(DigitSegment other)
+    {
+        bool tempIsLit = IsLit();
+        SetLit(other.IsLit());
+        other.SetLit(tempIsLit);
     }
 }
