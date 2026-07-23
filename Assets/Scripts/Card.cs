@@ -17,6 +17,6 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        print("clicked!");
+        
     }
 }
