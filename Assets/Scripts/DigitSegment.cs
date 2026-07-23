@@ -1,58 +1,58 @@
 using UnityEngine;
 
-
-//[System.Serializable]
+[RequireComponent(typeof(SpriteRenderer))]
 public class DigitSegment : MonoBehaviour
 {
-    Color litColour;
-    bool isLit;
+    private SpriteRenderer spriteRenderer;
+    private Color litColour;
+    private bool isLit;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsLit()
     {
-        
-    }
-
-    public bool IsLit() { 
         return isLit;
     }
 
-    public void ToggleOn() {
-        isLit = true;
-        GetComponent<SpriteRenderer>().color = litColour;
-    }
-
-    public void ToggleOff() {
-        isLit = false;
-        GetComponent<SpriteRenderer>().color = Color.black;
-    }
-
-    public void SetLit(bool isLit)
+    public void Toggle()
     {
-        if(isLit) { 
-            ToggleOn(); 
-        }
-        else { 
-            ToggleOff(); 
-        }
+        SetLit(!isLit);
     }
 
-    public void SetLitColour(Color colour) { 
+    public void ToggleOn()
+    {
+        SetLit(true);
+    }
+
+    public void ToggleOff()
+    {
+        SetLit(false);
+    }
+
+    public void SetLit(bool shouldBeLit)
+    {
+        isLit = shouldBeLit;
+        spriteRenderer.color = isLit ? litColour : Color.black;
+    }
+
+    public void SetLitColour(Color colour)
+    {
         litColour = colour;
         SetLit(isLit);
     }
 
     public void SwapWith(DigitSegment other)
     {
-        bool tempIsLit = IsLit();
+        if (other == null)
+        {
+            return;
+        }
+
+        bool previousState = isLit;
         SetLit(other.IsLit());
-        other.SetLit(tempIsLit);
+        other.SetLit(previousState);
     }
 }
