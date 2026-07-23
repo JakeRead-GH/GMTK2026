@@ -36,24 +36,12 @@ public class Digit : MonoBehaviour
     };
 
     //sorry for my dogshit coding. tired as fuck. also just shit
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    private void Awake()
     {
-        for (int i = 0; i < digitSegments.Length; i++) { 
-            InitialiseSegment(digitSegments[i]);
+        foreach (DigitSegment segment in digitSegments) {
+            segment.SetLitColour(litColour);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void InitialiseSegment(DigitSegment segment) { 
-        segment.SetLitColour(litColour);
     }
 
     public DigitSegment GetSegment(int segmentNumber) { 
@@ -76,7 +64,7 @@ public class Digit : MonoBehaviour
     {
         TurnOffDigit();
         foreach (char chIdx in pattern) { 
-            int segIdx = charToInt(chIdx);
+            int segIdx = CharToInt(chIdx);
             digitSegments[segIdx].ToggleOn();
         }
     }
@@ -103,25 +91,23 @@ public class Digit : MonoBehaviour
         }
     }
 
-    public void RotateBoundary(int steps, int dir)
+    public void RotateBoundary(int steps, int direction)
     {
+        string previousPattern = GetPattern();
         string newPattern = string.Empty;
-        string prevPattern = GetPattern();
-        int prevIdx;
-        int newIdx;
 
-        foreach (char chIdx in prevPattern)
+        foreach (char character in previousPattern)
         {
-            prevIdx = charToInt(chIdx);
+            int previousIndex = CharToInt(character);
 
+            int newIndex = previousIndex < boundarySegments
+                ? Mod(previousIndex + steps * direction, boundarySegments)
+                : previousIndex;
 
-            newIdx = mod((prevIdx + steps * dir), boundarySegments);
-            
-            newPattern += newIdx.ToString();
+            newPattern += newIndex.ToString();
         }
 
         SetPattern(newPattern);
-
     }
     
     public void SwapWith(Digit other)
@@ -138,14 +124,14 @@ public class Digit : MonoBehaviour
     }
 
     //Helper functions
-    int charToInt(char ch)
+    private static int CharToInt(char character)
     {
-        return ch - '0';
+        return character - '0';
     }
 
-    int mod(int x, int m)
+    private static int Mod(int value, int modulus)
     {
-        return (x % m + m) % m;
+        return (value % modulus + modulus) % modulus;
     }
 
     
