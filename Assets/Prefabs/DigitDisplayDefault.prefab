@@ -645,7 +645,7 @@ MonoBehaviour:
   - {fileID: 23258388407868359}
   - {fileID: 5685618587763955378}
   - {fileID: 5317535076581183591}
-  displayColour: {r: 1, g: 0.4741714, b: 0, a: 1}
+  litColour: {r: 1, g: 0.42565346, b: 0, a: 1}
 --- !u!1 &8057205465347108272
 GameObject:
   m_ObjectHideFlags: 0

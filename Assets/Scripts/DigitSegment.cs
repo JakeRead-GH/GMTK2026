@@ -20,16 +20,27 @@ public class DigitSegment : MonoBehaviour
         
     }
 
-    public void SetLit(bool _isLit) { 
-        isLit = _isLit;
-        GetComponent<SpriteRenderer>().color = litColour;
-    }
-
     public bool IsLit() { 
         return isLit;
     }
 
+    public void ToggleOn() {
+        isLit = true;
+        GetComponent<SpriteRenderer>().color = litColour;
+    }
+
+    public void ToggleOff() {
+        isLit = false;
+        GetComponent<SpriteRenderer>().color = Color.black;
+    }
+
     public void SetLitColour(Color colour) { 
         litColour = colour;
+        if (isLit) { 
+            ToggleOn();
+        }
+        else {
+            ToggleOff();
+        }
     }
 }

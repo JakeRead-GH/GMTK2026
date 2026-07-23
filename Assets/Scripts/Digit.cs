@@ -3,7 +3,7 @@ using UnityEngine;
 public class Digit : MonoBehaviour
 {
     [SerializeField] DigitSegment[] digitSegments;
-    [SerializeField] Color displayColour;
+    [SerializeField] Color litColour;
 
     //sorry for my dogshit coding. tired as fuck. also just shit
 
@@ -14,6 +14,9 @@ public class Digit : MonoBehaviour
         for (int i = 0; i < digitSegments.Length; i++) { 
             InitialiseSegment(digitSegments[i]);
         }
+        digitSegments[0].ToggleOn();
+        digitSegments[1].ToggleOn();
+        digitSegments[6].ToggleOn();
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class Digit : MonoBehaviour
     }
 
     void InitialiseSegment(DigitSegment segment) { 
-        segment.SetLitColour(displayColour);
+        segment.SetLitColour(litColour);
     }
 
     public DigitSegment GetSegment(int segmentNumber) { 
