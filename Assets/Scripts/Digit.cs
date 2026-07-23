@@ -35,6 +35,7 @@ public class Digit : MonoBehaviour
         {"12345" , "U" },
 
         //Misc
+        { "", " " },
         {"1245" , "11" }
 
     };
@@ -66,12 +67,13 @@ public class Digit : MonoBehaviour
         { "U", "12345" },
 
         //Misc
+        { " ", "" },
         { "11", "1245" }
     };
 
     //sorry for my dogshit coding. tired as fuck. also just shit
     
-    private void Awake()
+    private void Start()
     {
         foreach (DigitSegment segment in digitSegments) {
             segment.SetLitColour(litColour);
@@ -101,6 +103,15 @@ public class Digit : MonoBehaviour
             int segIdx = CharToInt(chIdx);
             digitSegments[segIdx].ToggleOn();
         }
+    }
+
+    public void SetPatternFromValue(string value) {
+        //takes a single character and displays it as a digit
+        string pattern = valToDisplayMapping.GetValueOrDefault(value);
+        if (pattern == null) { 
+            return;
+        }
+        SetPattern(pattern);
     }
 
     public void TurnOffDigit()
