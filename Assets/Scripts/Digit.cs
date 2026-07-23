@@ -19,7 +19,25 @@ public class Digit : MonoBehaviour
         { "023456", "6" }, 
         { "012", "7" }, 
         { "0123456", "8" }, 
-        { "012356" , "9" } 
+        { "012356" , "9" },
+        
+        //Alternate value displays
+
+        //Letters
+        {"0345" , "C" },
+        {"03456" , "E" },
+        {"0456" , "F" },
+        {"12456" , "H" },
+        {"1234" , "J" },
+        {"345" , "L" },
+        {"01245" , "N" },
+        {"01456" , "P" },
+        {"045" , "R" },
+        {"12345" , "U" },
+
+        //Misc
+        {"1245" , "11" }
+
     };
     private static Dictionary<string, string> valToDisplayMapping = new Dictionary<string, string>
     {
@@ -32,7 +50,24 @@ public class Digit : MonoBehaviour
         { "6", "023456" },
         { "7", "012" },
         { "8", "0123456" },
-        { "9", "012356" }
+        { "9", "012356" },
+                
+        //Alternate value displays
+
+        //Letters
+        { "C", "0345" },
+        { "E", "03456" },
+        { "F", "0456" },
+        { "H", "12456" },
+        { "J", "1234" },
+        { "L", "345" },
+        { "N", "01245" },
+        { "P", "01456" },
+        { "R", "045" },
+        { "U", "12345" },
+
+        //Misc
+        { "11", "1245" }
     };
 
     //sorry for my dogshit coding. tired as fuck. also just shit
