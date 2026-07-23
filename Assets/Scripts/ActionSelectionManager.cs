@@ -57,6 +57,7 @@ public sealed class ActionSelectionManager : MonoBehaviour
 
         if (!actionSucceeded) {
             Debug.Log("That action cannot be applied to those targets.");
+            StateManager.Instance.PopSnapshot();
         }
     }
 
