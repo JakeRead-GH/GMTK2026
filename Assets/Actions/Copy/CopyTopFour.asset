@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CopyTopFour
   m_EditorClassIdentifier: Assembly-CSharp::CopySegmentsAction
   actionName: 
-  cardIcon: {fileID: -4164630822507041897, guid: e8ff57906409ed0458fe57447de0885b, type: 3}
-  cursorTexture: {fileID: 2800000, guid: e8ff57906409ed0458fe57447de0885b, type: 3}
+  cardIcon: {fileID: 47596991133385183, guid: 5c3db48e3201aee4abbf6ab3f3195796, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 5c3db48e3201aee4abbf6ab3f3195796, type: 3}
   cursorHotspot: {x: 0, y: 0}
   segments: 99

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MirrorAllV
   m_EditorClassIdentifier: Assembly-CSharp::MirrorSegmentsAction
   actionName: 
-  cardIcon: {fileID: 21300000, guid: 47f2e0e6bf1181c43b70012d815ed84f, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 47f2e0e6bf1181c43b70012d815ed84f, type: 3}
+  cardIcon: {fileID: 21300000, guid: 6b9c90f454eb5fe4ab9c27f490d6b5bc, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 6b9c90f454eb5fe4ab9c27f490d6b5bc, type: 3}
   cursorHotspot: {x: 0, y: 0}
   axis: 0
   segments: -1

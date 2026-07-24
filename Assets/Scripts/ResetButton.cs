@@ -1,17 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResetButton : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public sealed class ResetButton : MonoBehaviour
 {
-
-    [Header("References")]
     [SerializeField] private Button button;
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private Image actionIcon;
-
-    [Header("Undo State Sprites")]
-    [SerializeField] private Sprite normalSprite;
-    [SerializeField] private Sprite selectedSprite;
 
     private void Awake()
     {
@@ -30,9 +23,9 @@ public class ResetButton : MonoBehaviour
             button.onClick.RemoveListener(OnResetClicked);
         }
     }
-    public void OnResetClicked()
+
+    private void OnResetClicked()
     {
         GameManager.instance.SetLevelInitialState();
     }
-
 }

@@ -1,20 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class UndoButton : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public sealed class UndoButton : MonoBehaviour
 {
-
     [SerializeField] private UndoScript undoScript;
-
-    [Header("References")]
     [SerializeField] private Button button;
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private Image actionIcon;
-
-    [Header("Undo State Sprites")]
-    [SerializeField] private Sprite normalSprite;
-    [SerializeField] private Sprite selectedSprite;
 
     private void Awake()
     {
@@ -34,7 +25,7 @@ public class UndoButton : MonoBehaviour
         }
     }
 
-    public void OnUndoClicked()
+    private void OnUndoClicked()
     {
         undoScript.UndoState();
     }
