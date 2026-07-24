@@ -3,8 +3,14 @@ using UnityEngine;
 public class UndoScript : MonoBehaviour
 {
     [SerializeField] private Digit[] digits;
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip undoClip;
+
     public void UndoState()
     {
+        SoundFXManager.instance.PlaySoundFXClip(undoClip, transform, 1f);
+
         StateSnapshot stateSnapshot = StateManager.instance.PopSnapshot();
         if (stateSnapshot == null)
         {

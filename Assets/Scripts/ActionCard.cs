@@ -32,7 +32,6 @@ public sealed class ActionCard : MonoBehaviour
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip buttonDown;
-    [SerializeField] private AudioClip buttonUp;
     [SerializeField] private AudioClip outOfMovesClip;
 
 
@@ -160,23 +159,21 @@ public sealed class ActionCard : MonoBehaviour
     public void SetSelected(bool selected)
     {
         isSelected = selected;
-        AudioClip selectClip;
         
         if (selected)
         {
-            selectClip = buttonDown;
+            SoundFXManager.instance.PlaySoundFXClip(buttonDown, transform, 1f);
         }
-        else
-        {
-            selectClip = buttonUp;
-        }
+       
 
-        SoundFXManager.instance.PlaySoundFXClip(selectClip, transform, 1f);
+        
         RefreshVisuals();
     }
 
     public void RefreshVisuals()
     {
+        print(isInitialized);
+        print(HasUsesRemaining);
         bool usable = isInitialized && HasUsesRemaining;
         if (!usable)
         {

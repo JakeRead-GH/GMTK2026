@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionSelectionManager
   actionClip: {fileID: 8300000, guid: 88d889cd2f666964e9f2db3deb2d7c88, type: 3}
+  deselectClip: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
 --- !u!4 &200428210
 Transform:
   m_ObjectHideFlags: 0
@@ -1565,7 +1566,7 @@ MonoBehaviour:
   - {fileID: 1334811867}
   remainingUses: 0700000007000000070000000700000007000000
   initialDisplayPattern: 1234
-  winningDisplayPattern: 1234
+  winningDisplayPattern: 9999
 --- !u!4 &431312193
 Transform:
   m_ObjectHideFlags: 0
@@ -1947,6 +1948,7 @@ MonoBehaviour:
   - {fileID: 985976187}
   - {fileID: 401674634}
   - {fileID: 1894839863}
+  undoClip: {fileID: 8300000, guid: e76c7d85f32ae6b468915075fcd4554e, type: 3}
 --- !u!114 &658750606
 MonoBehaviour:
   m_ObjectHideFlags: 0

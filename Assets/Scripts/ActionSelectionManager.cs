@@ -7,7 +7,8 @@ public sealed class ActionSelectionManager : MonoBehaviour
 
     [Header("Apply Action")]
     [SerializeField] private AudioClip actionClip;
-    
+    [SerializeField] private AudioClip deselectClip;
+
     private readonly List<Digit> selectedTargets = new();
 
     private ActionCard selectedCard;
@@ -20,6 +21,7 @@ public sealed class ActionSelectionManager : MonoBehaviour
 
         if (selectedCard == card) {
             ClearSelection(card);
+            SoundFXManager.instance.PlaySoundFXClip(deselectClip, transform, 1f);
             return;
         }
 

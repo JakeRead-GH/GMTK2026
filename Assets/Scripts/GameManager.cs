@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         foreach (ActionCard actionCard in actionCards) 
         { 
             actionCard.SetRemainingUses(actionCardUsesMapping[actionCard]);
+            actionCard.RefreshVisuals();
         }
         actionSelectionManager.ClearSelection();
         StateManager.instance.ClearStates();

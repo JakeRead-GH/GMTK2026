@@ -7,6 +7,8 @@ public sealed class UndoButton : MonoBehaviour
     [SerializeField] private UndoScript undoScript;
     [SerializeField] private Button button;
 
+
+
     private void Awake()
     {
         if (button == null)
