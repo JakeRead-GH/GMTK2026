@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionCardTestInitializer
   card: {fileID: 884428486}
-  action: {fileID: 11400000, guid: 88707f945551b8040898758486965174, type: 2}
+  action: {fileID: 11400000, guid: eff860a5857d6f046ba346e5ca3e4825, type: 2}
   startingUses: 9
   selectionManager: {fileID: 200428209}
 --- !u!114 &200428209

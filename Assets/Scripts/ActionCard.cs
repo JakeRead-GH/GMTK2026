@@ -98,6 +98,11 @@ public sealed class ActionCard : MonoBehaviour
             actionIcon.sprite = action.CardIcon;
             actionIcon.enabled = action.CardIcon != null;
             actionIcon.preserveAspect = true;
+
+            if (action.CardIcon != null)
+            {
+                actionIcon.SetNativeSize();
+            }
         }
 
         if (segmentPreview != null)
