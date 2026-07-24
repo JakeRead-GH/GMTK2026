@@ -7,11 +7,17 @@ public class Display : MonoBehaviour
 
     private static Dictionary<string, string> levelDisplayInitialStates = new Dictionary<string, string>
     {
+        { "MainStage", "1200" },
         { "Level_01", " 0NE" },
         { "Level_02", "22" },
         { "Level_03", "333" },
         { "Level_04", "4444444" },
-        { "Level_05", "HELP" }
+        { "Level_05", "HELP" },
+        { "Level_06", "0000" },
+        { "Level_07", "0000" },
+        { "Level_08", "0000" },
+        { "Level_09", "0000" },
+        { "Level_10", "0000" }
     };
 
     [SerializeField] Digit[] digits;
