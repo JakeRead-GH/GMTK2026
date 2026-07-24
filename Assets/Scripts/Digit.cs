@@ -7,7 +7,7 @@ public class Digit : MonoBehaviour
     [SerializeField] DigitSegment[] digitSegments;
     [SerializeField] Color litColour;
 
-    private static Dictionary<string, string> displayToValMapping = new Dictionary<string, string> 
+    private static Dictionary<string, string> digitToValMapping = new Dictionary<string, string> 
     { 
         { "012345", "0" }, 
         { "12", "1" }, 
@@ -36,7 +36,7 @@ public class Digit : MonoBehaviour
 
         //Misc
         { "", " " },
-        {"1245" , "11" }
+        {"1245" , "11" },
 
     };
     private static Dictionary<string, string> valToDisplayMapping = new Dictionary<string, string>
@@ -68,7 +68,8 @@ public class Digit : MonoBehaviour
 
         //Misc
         { " ", "" },
-        { "11", "1245" }
+        { "11", "1245" },
+        { "-", "" }
     };
 
     //sorry for my dogshit coding. tired as fuck. also just shit
@@ -117,6 +118,22 @@ public class Digit : MonoBehaviour
             return;
         }
         SetPattern(pattern);
+    }
+
+    public string GetDigitNumValue()
+    {
+        string segPattern = GetPattern();
+        if (segPattern == "") {
+            return "-";
+        }
+        
+        string patternVal = digitToValMapping.GetValueOrDefault(GetPattern());        
+        if (patternVal != null) {
+            return patternVal;
+        }
+
+        return "?";
+        
     }
 
     public void TurnOffDigit()

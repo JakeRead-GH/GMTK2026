@@ -7,7 +7,7 @@ public class Display : MonoBehaviour
 
     private static Dictionary<string, string> levelDisplayInitialStates = new Dictionary<string, string>
     {
-        { "MainStage", "1200" },
+        { "MainStage", "120" },
         { "Level_01", " 0NE" },
         { "Level_02", "22" },
         { "Level_03", "333" },
@@ -18,6 +18,12 @@ public class Display : MonoBehaviour
         { "Level_08", "0000" },
         { "Level_09", "0000" },
         { "Level_10", "0000" }
+    };
+
+    private static Dictionary<string, string> levelWinConditions = new Dictionary<string, string>
+    {
+        { "MainStage", "1200" },
+        { "Level_01", "NE--" }
     };
 
     [SerializeField] Digit[] digits;
@@ -47,5 +53,21 @@ public class Display : MonoBehaviour
             digits[digitIdx].SetPatternFromValue(digitValue);
             digitIdx++;
         }
+    }
+
+    public bool CheckSuccess()
+    {
+        string levelName = SceneManager.GetActiveScene().name;
+        string displayVal = string.Empty;
+        foreach (Digit digit in digits) 
+        {
+            displayVal += digit.GetDigitNumValue();  
+        }
+        string winPattern = levelWinConditions.GetValueOrDefault(levelName);
+        if (displayVal == winPattern) 
+        {
+            return true;
+        }
+        return false;
     }
 }
