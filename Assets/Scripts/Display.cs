@@ -7,10 +7,8 @@ public class Display : MonoBehaviour
     void Start()
     {
         digits[0].SetPattern("12");
-        digits[1].SetPattern("0123456");
-
-        //digits[0].SwapWith(digits[1]);
-        digits[0].CopyFrom(digits[1]);
+        digits[1].SetPattern("01346");
+        digits[2].SetPattern("0123456");
     }
 
     // Update is called once per frame

@@ -7,6 +7,18 @@ public class DigitSegment : MonoBehaviour
     private Color litColour;
     private bool isLit;
 
+    // This fixes a race condition
+    private SpriteRenderer Renderer
+    {
+        get {
+            if (spriteRenderer == null) {
+                spriteRenderer = GetComponent<SpriteRenderer>();
+            }
+
+            return spriteRenderer;
+        }
+    }
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,7 +47,7 @@ public class DigitSegment : MonoBehaviour
     public void SetLit(bool shouldBeLit)
     {
         isLit = shouldBeLit;
-        spriteRenderer.color = isLit ? litColour : Color.black;
+        Renderer.color = isLit ? litColour : Color.black;
     }
 
     public void SetLitColour(Color colour)
@@ -52,6 +64,7 @@ public class DigitSegment : MonoBehaviour
         }
 
         bool previousState = isLit;
+
         SetLit(other.IsLit());
         other.SetLit(previousState);
     }
