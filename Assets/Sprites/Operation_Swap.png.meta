@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 20eb827a7081f9b46914d110adedfd26
+guid: 7aa746db3d482dc4ebe86c3310f37f03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6351731881600203286
-    second: Reset_0
+      213: -2080783087477250438
+    second: Operation_Swap_0
   - first:
-      213: -6535032282132944936
-    second: Reset_1
+      213: -7516550692802164488
+    second: Operation_Swap_1
+  - first:
+      213: 9023920751772263827
+    second: Operation_Swap_2
+  - first:
+      213: -935190570301666340
+    second: Operation_Swap_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Reset_0
+      name: Operation_Swap_0
       rect:
         serializedVersion: 2
-        x: 78
-        y: 103
-        width: 73
-        height: 86
+        x: 27
+        y: 108
+        width: 111
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae542b0b18d1ad7a0800000000000000
-      internalID: -6351731881600203286
+      spriteID: a7627407ec29f13e0800000000000000
+      internalID: -2080783087477250438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Reset_1
+      name: Operation_Swap_1
       rect:
         serializedVersion: 2
-        x: 75
-        y: 34
-        width: 72
-        height: 59
+        x: 30
+        y: 58
+        width: 44
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +159,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d761c373c6ee45a0800000000000000
-      internalID: -6535032282132944936
+      spriteID: 8f88f4328f8dfa790800000000000000
+      internalID: -7516550692802164488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Operation_Swap_2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 57
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39569aaec186b3d70800000000000000
+      internalID: 9023920751772263827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Operation_Swap_3
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 21
+        width: 111
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdbcfd391298503f0800000000000000
+      internalID: -935190570301666340
       vertices: []
       indices: 
       edges: []
@@ -173,8 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Reset_0: -6351731881600203286
-      Reset_1: -6535032282132944936
+      Operation_Swap_0: -2080783087477250438
+      Operation_Swap_1: -7516550692802164488
+      Operation_Swap_2: 9023920751772263827
+      Operation_Swap_3: -935190570301666340
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

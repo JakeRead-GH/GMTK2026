@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SwapMiddleColumn
   m_EditorClassIdentifier: Assembly-CSharp::SwapSegmentsAction
   actionName: 
-  cardIcon: {fileID: 0}
-  cursorTexture: {fileID: 0}
+  cardIcon: {fileID: 21300000, guid: 7aa746db3d482dc4ebe86c3310f37f03, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 7aa746db3d482dc4ebe86c3310f37f03, type: 3}
   cursorHotspot: {x: 0, y: 0}
   segments: 73
