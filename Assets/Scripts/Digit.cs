@@ -72,6 +72,28 @@ public class Digit : MonoBehaviour
         { "11", "1245" },
         { "-", "" }
     };
+    
+    private static readonly int[] HorizontalMirrorMap =
+    {
+        3, // 0 -> 3
+        2, // 1 -> 2
+        1, // 2 -> 1
+        0, // 3 -> 0
+        5, // 4 -> 5
+        4, // 5 -> 4
+        6  // 6 -> 6
+    };
+
+    private static readonly int[] VerticalMirrorMap =
+    {
+        0, // 0 -> 0
+        5, // 1 -> 5
+        4, // 2 -> 4
+        3, // 3 -> 3
+        2, // 4 -> 2
+        1, // 5 -> 1
+        6  // 6 -> 6
+    };
 
     //sorry for my dogshit coding. tired as fuck. also just shit
     
@@ -372,6 +394,53 @@ public class Digit : MonoBehaviour
 
         return affectedAny;
     }
+    
+    public bool MirrorSegments(MirrorAxis axis, SegmentMask mask)
+    {
+        if (mask == SegmentMask.None) {
+            return false;
+        }
+
+        int[] mirrorMap = axis switch {
+            MirrorAxis.Horizontal => HorizontalMirrorMap,
+            MirrorAxis.Vertical => VerticalMirrorMap,
+            _ => null
+        };
+
+        if (mirrorMap == null || !IsValidMirrorMask(mask, mirrorMap)) {
+            return false;
+        }
+
+        int count = Mathf.Min(digitSegments.Length, mirrorMap.Length);
+
+        bool[] previousStates = new bool[count];
+        bool movesAnySegment = false;
+
+        // Snapshot first, just like rotation.
+        for (int index = 0; index < count; index++) {
+            previousStates[index] = digitSegments[index].IsLit();
+        }
+
+        for (int sourceIndex = 0; sourceIndex < count; sourceIndex++) {
+            SegmentMask sourceFlag = (SegmentMask)(1 << sourceIndex);
+
+            if ((mask & sourceFlag) == 0) {
+                continue;
+            }
+
+            int destinationIndex = mirrorMap[sourceIndex];
+
+            digitSegments[destinationIndex].SetLit(
+                previousStates[sourceIndex]
+            );
+
+            if (sourceIndex != destinationIndex) {
+                movesAnySegment = true;
+            }
+        }
+
+        return movesAnySegment;
+    }
 
     private bool IsValidSegmentCycle(IReadOnlyList<int> cycle)
     {
@@ -390,6 +459,30 @@ public class Digit : MonoBehaviour
                 !seenIndices.Add(index)
             )
             {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
+    private static bool IsValidMirrorMask(
+        SegmentMask mask,
+        IReadOnlyList<int> mirrorMap
+    )
+    {
+        for (int index = 0; index < mirrorMap.Count; index++) {
+            SegmentMask sourceFlag = (SegmentMask)(1 << index);
+
+            if ((mask & sourceFlag) == 0) {
+                continue;
+            }
+
+            int mirroredIndex = mirrorMap[index];
+
+            SegmentMask mirroredFlag = (SegmentMask)(1 << mirroredIndex);
+
+            if ((mask & mirroredFlag) == 0) {
                 return false;
             }
         }

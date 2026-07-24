@@ -39,6 +39,12 @@ public sealed class ActionSelectionManager : MonoBehaviour
         if (selectedCard == null || digit == null) {
             return;
         }
+        
+        // Stops them using a multiselect action on the same digit twice
+        if (selectedTargets.Contains(digit))
+        {
+            return;
+        }
 
         selectedTargets.Add(digit);
 
