@@ -40,11 +40,6 @@ public sealed class ActionSelectionManager : MonoBehaviour
 
         DigitAction action = selectedCard.Action;
 
-        Cursor.SetCursor(
-            action.CursorTexture,
-            action.CursorHotspot,
-            CursorMode.Auto
-        );
     }
 
     public ActionCard GetActionCard() { 

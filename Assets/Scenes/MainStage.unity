@@ -717,7 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UndoButton
   undoScript: {fileID: 658750605}
   button: {fileID: 658750601}
-  backgroundImage: {fileID: 884428488}
+  backgroundImage: {fileID: 0}
   actionIcon: {fileID: 1536293182}
   normalSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   selectedSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
@@ -1127,7 +1127,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 13efc3eb-7989-45a9-8782-4a11007cc6bf
-    m_ActionName: LevelBindings/Undo[/Keyboard/z]
+    m_ActionName: 'LevelBindings/Undo[/Keyboard/z]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1082902270}
@@ -1143,7 +1143,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 46e2beb9-bf13-4cab-9b58-1fb60ef80e37
-    m_ActionName: LevelBindings/Reset[/Keyboard/r]
+    m_ActionName: 'LevelBindings/Reset[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: LevelBindings
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UndoButton
   undoScript: {fileID: 0}
   button: {fileID: 1403692756}
-  backgroundImage: {fileID: 884428488}
+  backgroundImage: {fileID: 0}
   actionIcon: {fileID: 550409777}
   normalSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   selectedSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
@@ -1572,10 +1572,18 @@ PrefabInstance:
       propertyPath: boundarySegments
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 315511472411047409, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
+      propertyPath: actionSelecitonManager
+      value: 
+      objectReference: {fileID: 200428209}
     - target: {fileID: 1006433399623439795, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
       propertyPath: boundarySegments
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1006433399623439795, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
+      propertyPath: actionSelecitonManager
+      value: 
+      objectReference: {fileID: 200428209}
     - target: {fileID: 2480943840895895723, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.66409
@@ -1632,6 +1640,10 @@ PrefabInstance:
       propertyPath: boundarySegments
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4499793718533495703, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
+      propertyPath: actionSelecitonManager
+      value: 
+      objectReference: {fileID: 200428209}
     - target: {fileID: 5412710552110584088, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.16409
@@ -1645,31 +1657,35 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[0]
+      propertyPath: actionSelecitonManager
+      value: 
+      objectReference: {fileID: 200428209}
+    - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
+      propertyPath: 'digitSegments.Array.data[0]'
       value: 
       objectReference: {fileID: 306533918}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[1]
+      propertyPath: 'digitSegments.Array.data[1]'
       value: 
       objectReference: {fileID: 89044136}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[2]
+      propertyPath: 'digitSegments.Array.data[2]'
       value: 
       objectReference: {fileID: 2118144541}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[3]
+      propertyPath: 'digitSegments.Array.data[3]'
       value: 
       objectReference: {fileID: 2104320300}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[4]
+      propertyPath: 'digitSegments.Array.data[4]'
       value: 
       objectReference: {fileID: 1848587884}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[5]
+      propertyPath: 'digitSegments.Array.data[5]'
       value: 
       objectReference: {fileID: 1834140910}
     - target: {fileID: 6772873777175227655, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
-      propertyPath: digitSegments.Array.data[6]
+      propertyPath: 'digitSegments.Array.data[6]'
       value: 
       objectReference: {fileID: 1354396301}
     - target: {fileID: 8146828215829708670, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
