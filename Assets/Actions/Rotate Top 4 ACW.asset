@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190f421b40173284db69e969349b1bff, type: 3}
+  m_Name: Rotate Top 4 ACW
+  m_EditorClassIdentifier: Assembly-CSharp::RotateSegmentsAction
+  actionName: 
+  cardIcon: {fileID: 7192627521041966553, guid: 7838b2e209e7d0444bd19d1739306f5f, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 7838b2e209e7d0444bd19d1739306f5f, type: 3}
+  cursorHotspot: {x: 0, y: 0}
+  region: 2
+  clockwise: 0
+  steps: 1
