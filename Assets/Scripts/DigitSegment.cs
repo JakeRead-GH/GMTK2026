@@ -31,7 +31,7 @@ public class DigitSegment : MonoBehaviour
     }
 
     private void Update() {
-        if ((isHightlighted) && isLit) {
+        if ((isHightlighted)) {
             ProcessHighlightSegment();
         }
     }
