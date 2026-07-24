@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,6 +50,8 @@ public sealed class ActionSelectionManager : MonoBehaviour
         }
 
         ActionCard cardBeingUsed = selectedCard;
+
+        print(cardBeingUsed);
         StateManager.Instance.SetLastUsedAction(cardBeingUsed);
         StateManager.Instance.TakeSnapshot();
         bool actionSucceeded = cardBeingUsed.TryUse(selectedTargets);
