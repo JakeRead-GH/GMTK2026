@@ -401,14 +401,14 @@ public class Digit : MonoBehaviour
         }
         SegmentMask mask = currentCard.Action.AffectedSegments;
         string maskString = Convert.ToString((int)mask, 2);
-        int idx = 0;
+        int idx = digitSegments.Length - 2;
         foreach(char ch in maskString) {
             if (ch-'0' == 1) {
-                if (idx <= digitSegments.Length) { 
+                if (idx >=0) { 
                     digitSegments[idx].SetHighlight(state);
                 }
             }
-            idx++;
+            idx--;
         }
     }
 
