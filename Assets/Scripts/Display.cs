@@ -23,7 +23,8 @@ public class Display : MonoBehaviour
     private static Dictionary<string, string> levelWinConditions = new Dictionary<string, string>
     {
         { "MainStage", "1200" },
-        { "Level_01", "NE--" }
+        { "Level_01", "NE--" },
+        { "Level_07", "-00-" }
     };
 
     [SerializeField] Digit[] digits;
@@ -63,6 +64,7 @@ public class Display : MonoBehaviour
         {
             displayVal += digit.GetDigitNumValue();  
         }
+        print(displayVal);
         string winPattern = levelWinConditions.GetValueOrDefault(levelName);
         if (displayVal == winPattern) 
         {

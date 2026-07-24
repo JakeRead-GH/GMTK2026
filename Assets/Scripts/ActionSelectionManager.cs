@@ -73,6 +73,8 @@ public sealed class ActionSelectionManager : MonoBehaviour
             Debug.Log("That action cannot be applied to those targets.");
             StateManager.Instance.PopSnapshot();
         }
+
+        GameManager.Instance.HandleSucess();
     }
 
     public void ClearSelection(ActionCard requestingCard = null) {

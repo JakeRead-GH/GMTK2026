@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Display display;
     
+    SceneLoader sceneLoader;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -17,5 +19,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        sceneLoader = SceneLoader.instance;
+    }
+
+    public void HandleSucess()
+    {
+        if (!display.CheckSuccess())
+        {
+            return;
+        }
+        sceneLoader.LoadNextLevel();
     }
 }
