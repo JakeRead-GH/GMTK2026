@@ -9,6 +9,18 @@ public sealed class ActionSelectionManager : MonoBehaviour
 
     private ActionCard selectedCard;
 
+    private static ActionSelectionManager instance;
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else {
+            Destroy(this);
+        }
+    }
+
     public void SelectCard(ActionCard card)
     {
         if (card == null || !card.HasUsesRemaining) {
@@ -33,6 +45,10 @@ public sealed class ActionSelectionManager : MonoBehaviour
             action.CursorHotspot,
             CursorMode.Auto
         );
+    }
+
+    public ActionCard GetActionCard() { 
+        return selectedCard;
     }
 
     public void SelectDigit(Digit digit)
