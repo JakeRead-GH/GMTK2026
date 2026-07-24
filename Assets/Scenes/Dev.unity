@@ -1442,8 +1442,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelInfoStore
   actionCards:
-  - {fileID: 0}
-  remainingUses: 07000000
+  - {fileID: 884428486}
+  - {fileID: 952632166}
+  - {fileID: 577875332}
+  - {fileID: 1810202856}
+  - {fileID: 1334811867}
+  remainingUses: 0700000007000000070000000700000007000000
   initialDisplayPattern: 0000
   winningDisplayPattern: -00-
 --- !u!4 &431312193
