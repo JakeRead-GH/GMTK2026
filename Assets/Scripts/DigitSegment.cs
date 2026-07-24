@@ -98,7 +98,13 @@ public class DigitSegment : MonoBehaviour
         float highlightStrength = .7f;
         float minHighlight = .3f;
         float mixValue = (Mathf.Abs(Mathf.Sin(Time.time*highlightSpeed))+minHighlight)* highlightStrength;
-        Color currentColour = Color.Lerp(litColour, hightlightColour, mixValue);
+        Color currentColour;
+        if (isLit) {
+            currentColour = Color.Lerp(litColour, hightlightColour, mixValue);
+        }
+        else {
+            currentColour = Color.Lerp(defaultColour, hightlightColour, mixValue);
+        }
         Renderer.color = currentColour;
     }
 }
