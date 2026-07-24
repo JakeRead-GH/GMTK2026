@@ -18,6 +18,7 @@ public class Display : MonoBehaviour
         { "Level_08", "0000" },
         { "Level_09", "0000" },
         { "Level_10", "0000" }
+        //{ "CarcorSceneNoTouchy", "0000" }
     };
 
     private static Dictionary<string, string> levelWinConditions = new Dictionary<string, string>
@@ -42,8 +43,8 @@ public class Display : MonoBehaviour
     public void SetInitialState() {
         string levelName = SceneManager.GetActiveScene().name;
         string pattern = levelDisplayInitialStates.GetValueOrDefault(levelName);
-        if (pattern == null) { 
-            return;
+        if (pattern == null) {
+            pattern = "NULL";
         }
         int digitIdx = 0;
         foreach (char ch in pattern) {
