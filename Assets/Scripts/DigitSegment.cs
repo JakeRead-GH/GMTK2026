@@ -9,6 +9,12 @@ public class DigitSegment : MonoBehaviour
     private Color hightlightColour;
     private bool isLit;
     private bool isHightlighted = false;
+    private Material shaderMaterial;
+
+    //shader values
+    private float targetFlickerStrength = 1f;
+    private float currentFlickerStrength = 1f;
+    private float flickerSpeed = 24f;
 
     // This fixes a race condition
     private SpriteRenderer Renderer
@@ -16,6 +22,7 @@ public class DigitSegment : MonoBehaviour
         get {
             if (spriteRenderer == null) {
                 spriteRenderer = GetComponent<SpriteRenderer>();
+                shaderMaterial = spriteRenderer.material;
             }
 
             return spriteRenderer;
@@ -25,6 +32,7 @@ public class DigitSegment : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        shaderMaterial = spriteRenderer.material;
         defaultColour = Color.black;
         defaultColour.a = .4f;
         hightlightColour = Color.white;
@@ -33,6 +41,9 @@ public class DigitSegment : MonoBehaviour
     private void Update() {
         if ((isHightlighted)) {
             ProcessHighlightSegment();
+        }
+        if (currentFlickerStrength != targetFlickerStrength) { 
+            UpdateShader();
         }
     }
 
@@ -59,7 +70,16 @@ public class DigitSegment : MonoBehaviour
     public void SetLit(bool shouldBeLit)
     {
         isLit = shouldBeLit;
+        UpdateColour();
+        targetFlickerStrength = isLit ? 1f : 10f;
+    }
+
+    void UpdateColour() {
+        if (currentFlickerStrength != targetFlickerStrength) { 
+            //return;
+        }
         Renderer.color = isLit ? litColour : defaultColour;
+
     }
 
     public void SetLitColour(Color colour)
@@ -72,10 +92,10 @@ public class DigitSegment : MonoBehaviour
         isHightlighted = highlightState;
         if (!highlightState) {
             if (isLit) {
-                Renderer.color = litColour;
+                UpdateColour();
             }
-            else { 
-                Renderer.color = defaultColour;
+            else {
+                UpdateColour();
             }
         }
     }
@@ -106,5 +126,23 @@ public class DigitSegment : MonoBehaviour
             currentColour = Color.Lerp(defaultColour, hightlightColour, mixValue);
         }
         Renderer.color = currentColour;
+    }
+
+    void UpdateShader() { 
+        float minimumDelta = 1.0f;
+        if ((currentFlickerStrength - targetFlickerStrength)*(currentFlickerStrength - targetFlickerStrength) < minimumDelta*minimumDelta) {
+            currentFlickerStrength = targetFlickerStrength;
+            shaderMaterial.SetFloat("_Flicker_Out_Fader", currentFlickerStrength);
+            UpdateColour();
+            return;
+        }
+        if (currentFlickerStrength > targetFlickerStrength) { 
+            currentFlickerStrength -= flickerSpeed*Time.deltaTime;
+        }
+        if (currentFlickerStrength < targetFlickerStrength) {
+            currentFlickerStrength += flickerSpeed * Time.deltaTime;
+        }
+        shaderMaterial.SetFloat("_Flicker_Out_Fader", currentFlickerStrength);
+
     }
 }
