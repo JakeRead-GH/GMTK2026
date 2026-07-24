@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &7206338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7206340}
+  - component: {fileID: 7206339}
+  m_Layer: 0
+  m_Name: SoundFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7206339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb7513718cd97a4a9c91b864546e29a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
+  soundFXObject: {fileID: 130660235416576761, guid: a7e2805961b271847a85a269ef9ec664, type: 3}
+--- !u!4 &7206340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206338}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &21201573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4867440458597387130, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
@@ -800,6 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1664e9284fcb8244ea5ccf4bde93558c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionSelectionManager
+  actionClip: {fileID: 8300000, guid: 88d889cd2f666964e9f2db3deb2d7c88, type: 3}
 --- !u!4 &200428210
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,6 +1136,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940981745}
     m_Modifications:
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e38cdcf73baa0a4d8dc9097c00e3195, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: outOfMovesClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1507,7 +1565,7 @@ MonoBehaviour:
   - {fileID: 1334811867}
   remainingUses: 0700000007000000070000000700000007000000
   initialDisplayPattern: 1234
-  winningDisplayPattern: -00-
+  winningDisplayPattern: 1234
 --- !u!4 &431312193
 Transform:
   m_ObjectHideFlags: 0
@@ -2271,6 +2329,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940981745}
     m_Modifications:
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e38cdcf73baa0a4d8dc9097c00e3195, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: outOfMovesClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3330,6 +3400,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940981745}
     m_Modifications:
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e38cdcf73baa0a4d8dc9097c00e3195, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: outOfMovesClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4467,6 +4549,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940981745}
     m_Modifications:
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e38cdcf73baa0a4d8dc9097c00e3195, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: outOfMovesClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4703,6 +4797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   display: {fileID: 917104381}
   actionSelectionManager: {fileID: 200428209}
+  successClip: {fileID: 8300000, guid: 39a362011016ec040914f2635b031eee, type: 3}
 --- !u!4 &1826130484
 Transform:
   m_ObjectHideFlags: 0
@@ -5902,6 +5997,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 940981745}
     m_Modifications:
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e38cdcf73baa0a4d8dc9097c00e3195, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: outOfMovesClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6011,3 +6118,4 @@ SceneRoots:
   - {fileID: 202245793}
   - {fileID: 431312193}
   - {fileID: 1826130484}
+  - {fileID: 7206340}
