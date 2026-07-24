@@ -1,5 +1,11 @@
 using System;
 
+//   0
+// 5   1
+//   6
+// 4   2
+//   3
+
 [Flags]
 public enum SegmentMask
 {
