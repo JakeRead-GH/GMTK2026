@@ -345,6 +345,33 @@ public class Digit : MonoBehaviour
 
         return true;
     }
+    
+    public bool ToggleSegmentLocks(SegmentMask mask)
+    {
+        if (mask == SegmentMask.None)
+        {
+            return false;
+        }
+
+        bool affectedAny = false;
+
+        int count = Mathf.Min(digitSegments.Length, 7);
+
+        for (int index = 0; index < count; index++)
+        {
+            SegmentMask flag = (SegmentMask)(1 << index);
+
+            if ((mask & flag) == 0)
+            {
+                continue;
+            }
+
+            digitSegments[index].ToggleLock();
+            affectedAny = true;
+        }
+
+        return affectedAny;
+    }
 
     private bool IsValidSegmentCycle(IReadOnlyList<int> cycle)
     {
