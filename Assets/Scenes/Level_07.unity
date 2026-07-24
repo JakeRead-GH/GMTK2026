@@ -650,15 +650,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1302,6 +1302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   display: {fileID: 917104381}
+  actionSelectionManager: {fileID: 200428209}
 --- !u!1 &1485400862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8010236868979121951, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
@@ -1372,6 +1373,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6140804838035501433, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
   m_PrefabInstance: {fileID: 4954911377302519527}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1766011999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766012000}
+  - component: {fileID: 1766012001}
+  m_Layer: 0
+  m_Name: LevelInfoStore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1766012000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766011999}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 797.6393, y: 380.27213, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1766012001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766011999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb99938b37353f449c356db65322b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelInfoStore
+  actionCards:
+  - {fileID: 732741686}
+  remainingUses: 07000000
+  initialDisplayPattern: 0000
+  winningDisplayPattern: -00-
 --- !u!1 &1789694392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1434,7 @@ GameObject:
   - component: {fileID: 1789694397}
   - component: {fileID: 1789694396}
   - component: {fileID: 1789694395}
-  - component: {fileID: 1789694394}
+  - component: {fileID: 1789694398}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -1412,24 +1462,6 @@ RectTransform:
   m_AnchoredPosition: {x: 716.16406, y: -44.180298}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1789694394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789694392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36b6cf44bd5a134d87cfb106eab6b1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UndoButton
-  undoScript: {fileID: 0}
-  button: {fileID: 1789694395}
-  backgroundImage: {fileID: 0}
-  actionIcon: {fileID: 1276234222}
-  normalSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  selectedSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1789694395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,6 +1544,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789694392}
   m_CullTransparentMesh: 1
+--- !u!114 &1789694398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789694392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e58d4826015da4789348ac9e67330e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetButton
+  button: {fileID: 1789694395}
+  backgroundImage: {fileID: 0}
+  actionIcon: {fileID: 0}
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
 --- !u!114 &1834140910 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1897736538154673817, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
@@ -1890,3 +1939,4 @@ SceneRoots:
   - {fileID: 202245793}
   - {fileID: 1082902271}
   - {fileID: 1454840943}
+  - {fileID: 1766012000}

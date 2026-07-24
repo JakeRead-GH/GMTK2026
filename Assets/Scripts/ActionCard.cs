@@ -71,6 +71,11 @@ public sealed class ActionCard : MonoBehaviour
         remainingUses++;
     }
 
+    public void SetRemainingUses(int remainingUses)
+    {
+        this.remainingUses = remainingUses;
+    }
+
     public void Initialize(
         DigitAction newAction,
         int startingUses,

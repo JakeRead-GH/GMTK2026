@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class ResetButton : MonoBehaviour
 {
 
-    [SerializeField] private Display display;
-
     [Header("References")]
     [SerializeField] private Button button;
     [SerializeField] private Image backgroundImage;
@@ -34,7 +32,7 @@ public class ResetButton : MonoBehaviour
     }
     public void OnResetClicked()
     {
-        display.SetInitialState();
+        GameManager.Instance.SetLevelInitialState();
     }
 
 }

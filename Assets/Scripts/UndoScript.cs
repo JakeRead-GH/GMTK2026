@@ -14,7 +14,9 @@ public class UndoScript : MonoBehaviour
         foreach (Digit digit in digits)
         {
             string digitPattern = stateSnapshot.DigitPatterns[digit];
-            digit.SetPattern(stateSnapshot.DigitPatterns[digit]);
+            string lockedPattern = stateSnapshot.LockedPatterns[digit];
+            digit.SetPattern(digitPattern);
+            digit.SetLockedPattern(lockedPattern);
         }
 
         ActionCard actionUsed = stateSnapshot.ActionUsed;

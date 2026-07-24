@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections.Generic;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class SceneLoader : MonoBehaviour
     private static string[] levelNames = new string[] { "Level_01", "Level_02", "Level_03", "Level_04", "Level_05", "Level_06", "Level_07", "Level_08", "Level_09", "Level_10" };
 
     public static SceneLoader instance;
+
+    public ActionCard[] cardList;
 
     void Start()
     {

@@ -5,49 +5,14 @@ using UnityEngine;
 public class Display : MonoBehaviour
 {
 
-    private static Dictionary<string, string> levelDisplayInitialStates = new Dictionary<string, string>
-    {
-        { "MainStage", "120" },
-        { "Level_01", " 0NE" },
-        { "Level_02", "22" },
-        { "Level_03", "333" },
-        { "Level_04", "4444444" },
-        { "Level_05", "HELP" },
-        { "Level_06", "0000" },
-        { "Level_07", "0000" },
-        { "Level_08", "0000" },
-        { "Level_09", "0000" },
-        { "Level_10", "0000" }
-        //{ "CarcorSceneNoTouchy", "0000" }
-    };
-
-    private static Dictionary<string, string> levelWinConditions = new Dictionary<string, string>
-    {
-        { "MainStage", "1200" },
-        { "Level_01", "NE--" },
-        { "Level_07", "-00-" }
-    };
-
     [SerializeField] Digit[] digits;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        SetInitialState();
-    }
 
-    void Update()
-    {
-        
-    }
-
-    public void SetInitialState() {
-        string levelName = SceneManager.GetActiveScene().name;
-        string pattern = levelDisplayInitialStates.GetValueOrDefault(levelName);
-        if (pattern == null) {
-            pattern = "NULL";
+    public void SetDisplayPattern(string displayPattern) {
+        if (displayPattern == null) {
+            displayPattern = "NULL";
         }
         int digitIdx = 0;
-        foreach (char ch in pattern) {
+        foreach (char ch in displayPattern) {
             if (digitIdx >= digits.Length) {
                 break;
             }
@@ -59,14 +24,13 @@ public class Display : MonoBehaviour
 
     public bool CheckSuccess()
     {
-        string levelName = SceneManager.GetActiveScene().name;
         string displayVal = string.Empty;
         foreach (Digit digit in digits) 
         {
             displayVal += digit.GetDigitNumValue();  
         }
         print(displayVal);
-        string winPattern = levelWinConditions.GetValueOrDefault(levelName);
+        string winPattern = LevelInfoStore.Instance.WinningDisplayPattern;
         if (displayVal == winPattern) 
         {
             return true;

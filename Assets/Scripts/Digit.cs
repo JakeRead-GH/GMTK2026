@@ -103,12 +103,34 @@ public class Digit : MonoBehaviour
         return pattern;
     }
 
+    public string GetLockedPattern()
+    {
+        string pattern = string.Empty;
+        for (int i = 0; i < digitSegments.Length; i++)
+        {
+            DigitSegment currSegment = digitSegments[i];
+            if (GetSegment(i).IsLocked())
+                pattern += i.ToString();
+        }
+        return pattern;
+    }
+
     public void SetPattern(string pattern)
     {
         TurnOffDigit();
         foreach (char chIdx in pattern) { 
             int segIdx = CharToInt(chIdx);
             digitSegments[segIdx].ToggleOn();
+        }
+    }
+
+    public void SetLockedPattern(string pattern)
+    {
+        UnlockDigit();
+        foreach (char chIdx in pattern)
+        {
+            int segIdx = CharToInt(chIdx);
+            digitSegments[segIdx].SetLocked(true);
         }
     }
 
@@ -142,6 +164,14 @@ public class Digit : MonoBehaviour
         foreach (DigitSegment segment in digitSegments) {
             segment.ToggleOff();
         } 
+    }
+
+    public void UnlockDigit()
+    {
+        foreach (DigitSegment segment in digitSegments)
+        {
+            segment.SetLocked(false);
+        }
     }
 
     public void ToggleAll()

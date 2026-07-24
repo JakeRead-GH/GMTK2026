@@ -9,6 +9,7 @@ public class StateManager : MonoBehaviour
     private Stack<StateSnapshot> stateSnapshots;
 
     private Dictionary<Digit, string> prevDigitPatterns;
+    private Dictionary<Digit, string> prevLockedPatterns;
     private ActionCard lastUsedAction;
 
     public static StateManager Instance { get; private set; }
@@ -46,7 +47,8 @@ public class StateManager : MonoBehaviour
     public void TakeSnapshot()
     {
         SavePrevDigitPatterns();
-        stateSnapshots.Push(new StateSnapshot(prevDigitPatterns, lastUsedAction));
+        SavePrevLockedPatterns();
+        stateSnapshots.Push(new StateSnapshot(prevDigitPatterns, prevLockedPatterns, lastUsedAction));
     }
 
     public void SetLastUsedAction (ActionCard lastUsedAction)
@@ -63,20 +65,33 @@ public class StateManager : MonoBehaviour
 
         prevDigitPatterns = digitPatterns;
     }
+
+    public void SavePrevLockedPatterns()
+    {
+        Dictionary<Digit, string> lockedPatterns = new Dictionary<Digit, string>();
+        foreach (Digit digit in digits)
+        {
+            lockedPatterns.Add(digit, digit.GetLockedPattern());
+        }
+
+        prevLockedPatterns = lockedPatterns;
+    }
 }
 
 public class StateSnapshot
 {
     Dictionary<Digit, string> digitPatterns;
+    Dictionary<Digit, string> lockedPatterns;
     ActionCard actionUsed;
 
-    public StateSnapshot(Dictionary<Digit, string> digitPatterns, ActionCard actionUsed)
+    public StateSnapshot(Dictionary<Digit, string> digitPatterns, Dictionary<Digit, string> lockedPatterns, ActionCard actionUsed)
     {
         this.digitPatterns = digitPatterns;
+        this.lockedPatterns = lockedPatterns;
         this.actionUsed = actionUsed;
     }
 
     public Dictionary<Digit, string> DigitPatterns => digitPatterns;
-
+    public Dictionary<Digit, string> LockedPatterns => lockedPatterns;
     public ActionCard ActionUsed => actionUsed;
 }
