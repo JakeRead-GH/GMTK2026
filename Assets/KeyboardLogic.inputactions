@@ -1,0 +1,66 @@
+{
+    "version": 1,
+    "name": "KeyboardLogic",
+    "maps": [
+        {
+            "name": "LevelBindings",
+            "id": "9989bf88-8129-4387-b10e-9334f3e232d1",
+            "actions": [
+                {
+                    "name": "Undo",
+                    "type": "Button",
+                    "id": "13efc3eb-7989-45a9-8782-4a11007cc6bf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "46e2beb9-bf13-4cab-9b58-1fb60ef80e37",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f87d9c5-6f63-4c17-84dc-0c46448ce8e2",
+                    "path": "<Keyboard>/#(Z)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d593f159-be55-4599-bd9f-fe87b7eae7b4",
+                    "path": "<Keyboard>/#(U)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bf3827a-0087-4dfe-bf00-ef01dceaf370",
+                    "path": "<Keyboard>/#(R)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

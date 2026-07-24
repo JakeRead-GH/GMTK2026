@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class UndoButton : MonoBehaviour
+public class ResetButton : MonoBehaviour
 {
 
-    [SerializeField] private UndoScript undoScript;
+    [SerializeField] private Display display;
 
     [Header("References")]
     [SerializeField] private Button button;
@@ -23,19 +22,19 @@ public class UndoButton : MonoBehaviour
             button = GetComponent<Button>();
         }
 
-        button.onClick.AddListener(OnUndoClicked);
+        button.onClick.AddListener(OnResetClicked);
     }
 
     private void OnDestroy()
     {
         if (button != null)
         {
-            button.onClick.RemoveListener(OnUndoClicked);
+            button.onClick.RemoveListener(OnResetClicked);
         }
     }
-
-    public void OnUndoClicked()
+    public void OnResetClicked()
     {
-        undoScript.UndoState();
+        display.SetInitialState();
     }
+
 }

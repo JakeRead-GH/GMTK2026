@@ -32,7 +32,7 @@ public class Display : MonoBehaviour
         
     }
 
-    void SetInitialState() {
+    public void SetInitialState() {
         string levelName = SceneManager.GetActiveScene().name;
         string pattern = levelDisplayInitialStates.GetValueOrDefault(levelName);
         if (pattern == null) { 
@@ -48,5 +48,4 @@ public class Display : MonoBehaviour
             digitIdx++;
         }
     }
-
 }
