@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0903624677c4d2c46bff46120e47ff59
+guid: 7da703a1dc46def44a1b4b1dbbf47978
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6552335506920855351
-    second: Toggle_Icon_0
-  - first:
-      213: -1434817845321401250
-    second: Toggle_Icon_1
+      213: 728648374709593794
+    second: CircleBackground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Toggle_Icon_0
+      name: CircleBackground_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 41
-        width: 77
-        height: 69
+        x: 0
+        y: 0
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c8adcc729d6115a0800000000000000
-      internalID: -6552335506920855351
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toggle_Icon_1
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 67
-        width: 13
-        height: 53
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e5cf93c85c0861ce0800000000000000
-      internalID: -1434817845321401250
+      spriteID: 2c62bb416ddac1a00800000000000000
+      internalID: 728648374709593794
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Toggle_Icon_0: -6552335506920855351
-      Toggle_Icon_1: -1434817845321401250
+      CircleBackground_0: 728648374709593794
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

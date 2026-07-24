@@ -8,15 +8,27 @@ public sealed class ActionCard : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Button button;
-    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Image borderImage;
+    [SerializeField] private RectTransform centreComponents;
+    [SerializeField] private Vector2 selectedContentOffset = new Vector2(0f, -8f);
     [SerializeField] private Image actionIcon;
     [SerializeField] private SevenSegmentPreview segmentPreview;
     [SerializeField] private TMP_Text remainingUsesText;
+    [SerializeField] private Image fillImage;
+    [SerializeField] private CanvasGroup cardCanvasGroup;
 
     [Header("Card State Sprites")]
     [SerializeField] private Sprite normalSprite;
     [SerializeField] private Sprite selectedSprite;
     [SerializeField] private Sprite exhaustedSprite;
+    
+    [Header("Fill Colours")]
+    [SerializeField] private Color normalFillColour = Color.white;
+    [SerializeField] private Color selectedFillColour = Color.gray;
+
+    [Header("Exhausted State")]
+    [SerializeField, Range(0f, 1f)]
+    private float exhaustedAlpha = 0.55f;
 
     private DigitAction action;
     private ActionSelectionManager selectionManager;
@@ -25,6 +37,7 @@ public sealed class ActionCard : MonoBehaviour
     private bool isSelected;
     private bool isInitialized;
 
+    private Vector2 contentRestPosition;
     public DigitAction Action => action;
     public int RemainingUses => remainingUses;
     public bool HasUsesRemaining => remainingUses > 0;
@@ -34,6 +47,11 @@ public sealed class ActionCard : MonoBehaviour
         if (button == null)
         {
             button = GetComponent<Button>();
+        }
+
+        if (centreComponents != null)
+        {
+            contentRestPosition = centreComponents.anchoredPosition;
         }
 
         button.onClick.AddListener(OnCardClicked);
@@ -132,33 +150,52 @@ public sealed class ActionCard : MonoBehaviour
     public void RefreshVisuals()
     {
         bool usable = isInitialized && HasUsesRemaining;
+        bool pressed = usable && isSelected;
 
-        if (button != null)
-        {
+        if (button != null) {
             button.interactable = usable;
         }
 
-        if (remainingUsesText != null)
-        {
+        if (remainingUsesText != null) {
             remainingUsesText.text = remainingUses.ToString();
         }
 
-        if (backgroundImage == null)
-        {
-            return;
+        // Swap the outer border.
+        if (borderImage != null) {
+            if (!usable) {
+                borderImage.sprite = exhaustedSprite != null
+                    ? exhaustedSprite
+                    : normalSprite;
+            } else {
+                borderImage.sprite = pressed
+                    ? selectedSprite
+                    : normalSprite;
+            }
         }
 
-        if (!usable)
+        // Tint the same fill sprite darker while selected.
+        if (fillImage != null)
         {
-            backgroundImage.sprite = exhaustedSprite != null
-                ? exhaustedSprite
-                : normalSprite;
+            fillImage.color = pressed
+                ? selectedFillColour
+                : normalFillColour;
         }
-        else
-        {
-            backgroundImage.sprite = isSelected
-                ? selectedSprite
-                : normalSprite;
+
+        // Move the icon, preview, and use count downward.
+        if (centreComponents != null) {
+            centreComponents.anchoredPosition =
+                contentRestPosition +
+                (pressed ? selectedContentOffset : Vector2.zero);
+        }
+
+        // Fade every visual when no uses remain.
+        if (cardCanvasGroup != null) {
+            cardCanvasGroup.alpha = usable
+                ? 1f
+                : exhaustedAlpha;
+
+            cardCanvasGroup.interactable = usable;
+            cardCanvasGroup.blocksRaycasts = usable;
         }
     }
 }

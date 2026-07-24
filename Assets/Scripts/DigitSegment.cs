@@ -6,7 +6,9 @@ public class DigitSegment : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color litColour;
     private Color defaultColour;
+    private Color hightlightColour;
     private bool isLit;
+    private bool isHightlighted = false;
 
     // This fixes a race condition
     private SpriteRenderer Renderer
@@ -25,6 +27,13 @@ public class DigitSegment : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColour = Color.black;
         defaultColour.a = .4f;
+        hightlightColour = Color.white;
+    }
+
+    private void Update() {
+        if ((isHightlighted) && isLit) {
+            ProcessHighlightSegment();
+        }
     }
 
     public bool IsLit()
@@ -59,6 +68,18 @@ public class DigitSegment : MonoBehaviour
         SetLit(isLit);
     }
 
+    public void SetHighlight(bool highlightState) { 
+        isHightlighted = highlightState;
+        if (!highlightState) {
+            if (isLit) {
+                Renderer.color = litColour;
+            }
+            else { 
+                Renderer.color = defaultColour;
+            }
+        }
+    }
+
     public void SwapWith(DigitSegment other)
     {
         if (other == null)
@@ -70,5 +91,14 @@ public class DigitSegment : MonoBehaviour
 
         SetLit(other.IsLit());
         other.SetLit(previousState);
+    }
+
+    public void ProcessHighlightSegment() {
+        float highlightSpeed = 2f;
+        float highlightStrength = .7f;
+        float minHighlight = .3f;
+        float mixValue = (Mathf.Abs(Mathf.Sin(Time.time*highlightSpeed))+minHighlight)* highlightStrength;
+        Color currentColour = Color.Lerp(litColour, hightlightColour, mixValue);
+        Renderer.color = currentColour;
     }
 }

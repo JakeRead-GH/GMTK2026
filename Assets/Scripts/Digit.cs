@@ -6,6 +6,7 @@ public class Digit : MonoBehaviour
 {
     [SerializeField] DigitSegment[] digitSegments;
     [SerializeField] Color litColour;
+    [SerializeField] ActionSelectionManager actionSelecitonManager;
 
     private static Dictionary<string, string> digitToValMapping = new Dictionary<string, string> 
     { 
@@ -380,5 +381,35 @@ public class Digit : MonoBehaviour
         return (value % modulus + modulus) % modulus;
     }
 
-    
+    private void OnMouseEnter() {
+        SetSegmentHighlight(true);
+    }
+    private void OnMouseExit() {
+        SetSegmentHighlight(false);
+    }
+
+    public void SetSegmentHighlight(bool state) {
+        if (actionSelecitonManager == null) {
+            return;
+        }
+        ActionCard currentCard = actionSelecitonManager.GetActionCard();
+        if (currentCard == null) {
+            for (int i = 0; i < digitSegments.Length; i++) {
+                digitSegments[i].SetHighlight(false);
+            }
+            return;
+        }
+        SegmentMask mask = currentCard.Action.AffectedSegments;
+        string maskString = Convert.ToString((int)mask, 2);
+        int idx = 0;
+        foreach(char ch in maskString) {
+            if (ch-'0' == 1) {
+                if (idx <= digitSegments.Length) { 
+                    digitSegments[idx].SetHighlight(state);
+                }
+            }
+            idx++;
+        }
+    }
+
 }
