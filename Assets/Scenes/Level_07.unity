@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1664e9284fcb8244ea5ccf4bde93558c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionSelectionManager
+  actionClip: {fileID: 8300000, guid: 88d889cd2f666964e9f2db3deb2d7c88, type: 3}
 --- !u!4 &200428210
 Transform:
   m_ObjectHideFlags: 0
@@ -444,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb7513718cd97a4a9c91b864546e29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
+  soundFXObject: {fileID: 130660235416576761, guid: a7e2805961b271847a85a269ef9ec664, type: 3}
 --- !u!4 &353322984
 Transform:
   m_ObjectHideFlags: 0
@@ -453,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 353322982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 824.8233, y: 262.92355, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -644,6 +646,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1215368934}
     m_Modifications:
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: buttonDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e38cdcf73baa0a4d8dc9097c00e3195, type: 3}
+    - target: {fileID: 1151940999461148496, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
+      propertyPath: outOfMovesClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
     - target: {fileID: 4057060080843053873, guid: 4d107e219fa9b5e4ab37f2a7a4578078, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1002,7 +1016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1082902270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,7 +1069,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082902269}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -1347,6 +1361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   display: {fileID: 917104381}
   actionSelectionManager: {fileID: 200428209}
+  successClip: {fileID: 8300000, guid: 39a362011016ec040914f2635b031eee, type: 3}
 --- !u!1 &1485400862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8010236868979121951, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}

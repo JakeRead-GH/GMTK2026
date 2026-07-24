@@ -30,7 +30,7 @@ public class Display : MonoBehaviour
             displayVal += digit.GetDigitNumValue();  
         }
         print(displayVal);
-        string winPattern = LevelInfoStore.Instance.WinningDisplayPattern;
+        string winPattern = LevelInfoStore.instance.WinningDisplayPattern;
         if (displayVal == winPattern) 
         {
             return true;

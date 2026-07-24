@@ -12,16 +12,16 @@ public class StateManager : MonoBehaviour
     private Dictionary<Digit, string> prevLockedPatterns;
     private ActionCard lastUsedAction;
 
-    public static StateManager Instance { get; private set; }
+    public static StateManager instance { get; private set; }
 
     public void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
         stateSnapshots = new Stack<StateSnapshot>();
     }
 

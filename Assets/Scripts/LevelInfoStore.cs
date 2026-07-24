@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class LevelInfoStore : MonoBehaviour
 {
-    public static LevelInfoStore Instance { get; private set; }
+    public static LevelInfoStore instance { get; private set; }
 
     [Tooltip("Action cards present in the level")]
     [SerializeField] ActionCard[] actionCards;
@@ -32,12 +32,12 @@ public class LevelInfoStore : MonoBehaviour
             return;
         }
 
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
         
         actionCardUsesMapping = new Dictionary<ActionCard, int>();
         for (int i = 0; i < actionCards.Length; i++) 

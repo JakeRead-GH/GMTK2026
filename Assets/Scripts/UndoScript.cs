@@ -5,7 +5,7 @@ public class UndoScript : MonoBehaviour
     [SerializeField] private Digit[] digits;
     public void UndoState()
     {
-        StateSnapshot stateSnapshot = StateManager.Instance.PopSnapshot();
+        StateSnapshot stateSnapshot = StateManager.instance.PopSnapshot();
         if (stateSnapshot == null)
         {
             return;

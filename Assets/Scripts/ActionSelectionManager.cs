@@ -5,6 +5,9 @@ using UnityEngine;
 public sealed class ActionSelectionManager : MonoBehaviour
 {
 
+    [Header("Apply Action")]
+    [SerializeField] private AudioClip actionClip;
+    
     private readonly List<Digit> selectedTargets = new();
 
     private ActionCard selectedCard;
@@ -57,18 +60,19 @@ public sealed class ActionSelectionManager : MonoBehaviour
         ActionCard cardBeingUsed = selectedCard;
 
         print(cardBeingUsed);
-        StateManager.Instance.SetLastUsedAction(cardBeingUsed);
-        StateManager.Instance.TakeSnapshot();
+        StateManager.instance.SetLastUsedAction(cardBeingUsed);
+        StateManager.instance.TakeSnapshot();
         bool actionSucceeded = cardBeingUsed.TryUse(selectedTargets);
 
         selectedTargets.Clear();
 
         if (!actionSucceeded) {
             Debug.Log("That action cannot be applied to those targets.");
-            StateManager.Instance.PopSnapshot();
+            StateManager.instance.PopSnapshot();
         }
+        SoundFXManager.instance.PlaySoundFXClip(actionClip, transform, 1f);
 
-        GameManager.Instance.HandleSucess();
+        GameManager.instance.HandleSucess();
     }
 
     public void ClearSelection(ActionCard requestingCard = null) {

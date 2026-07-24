@@ -30,6 +30,12 @@ public sealed class ActionCard : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     private float exhaustedAlpha = 0.55f;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip buttonDown;
+    [SerializeField] private AudioClip buttonUp;
+    [SerializeField] private AudioClip outOfMovesClip;
+
+
     private DigitAction action;
     private ActionSelectionManager selectionManager;
 
@@ -154,12 +160,28 @@ public sealed class ActionCard : MonoBehaviour
     public void SetSelected(bool selected)
     {
         isSelected = selected;
+        AudioClip selectClip;
+        
+        if (selected)
+        {
+            selectClip = buttonDown;
+        }
+        else
+        {
+            selectClip = buttonUp;
+        }
+
+        SoundFXManager.instance.PlaySoundFXClip(selectClip, transform, 1f);
         RefreshVisuals();
     }
 
     public void RefreshVisuals()
     {
         bool usable = isInitialized && HasUsesRemaining;
+        if (!usable)
+        {
+            SoundFXManager.instance.PlaySoundFXClip(outOfMovesClip, transform, 1f);
+        }
         bool pressed = usable && isSelected;
 
         if (button != null) {

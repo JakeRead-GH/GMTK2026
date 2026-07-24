@@ -32,7 +32,7 @@ public class ResetButton : MonoBehaviour
     }
     public void OnResetClicked()
     {
-        GameManager.Instance.SetLevelInitialState();
+        GameManager.instance.SetLevelInitialState();
     }
 
 }

@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance { get; private set; }
 
     [SerializeField] Display display;
     [SerializeField] ActionSelectionManager actionSelectionManager;
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip successClip;
 
     SceneLoader sceneLoader;
 
@@ -40,12 +43,12 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        instance = this;
         sceneLoader = SceneLoader.instance;
         SetLevelInitialState();
     }
@@ -56,19 +59,20 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        SoundFXManager.instance.PlaySoundFXClip(successClip, transform, 1f);
         sceneLoader.LoadNextLevel();
     }
 
     public void SetLevelInitialState()
     {
-        display.SetDisplayPattern(LevelInfoStore.Instance.InitialDisplayPattern);
-        ActionCard[] actionCards = LevelInfoStore.Instance.ActionCards;
-        Dictionary<ActionCard, int> actionCardUsesMapping = LevelInfoStore.Instance.ActionCardUsesMapping;
+        display.SetDisplayPattern(LevelInfoStore.instance.InitialDisplayPattern);
+        ActionCard[] actionCards = LevelInfoStore.instance.ActionCards;
+        Dictionary<ActionCard, int> actionCardUsesMapping = LevelInfoStore.instance.ActionCardUsesMapping;
         foreach (ActionCard actionCard in actionCards) 
         { 
             actionCard.SetRemainingUses(actionCardUsesMapping[actionCard]);
         }
         actionSelectionManager.ClearSelection();
-        StateManager.Instance.ClearStates();
+        StateManager.instance.ClearStates();
     }
 }

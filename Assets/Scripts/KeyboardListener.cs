@@ -23,7 +23,7 @@ public class KeyboardListener : MonoBehaviour
     public void OnResetKeyDown(InputAction.CallbackContext context) {
         if (context.performed)
         {
-            GameManager.Instance.SetLevelInitialState();
+            GameManager.instance.SetLevelInitialState();
         }
     }
 }
