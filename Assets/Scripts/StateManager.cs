@@ -31,6 +31,10 @@ public class StateManager : MonoBehaviour
     
     public StateSnapshot PopSnapshot()
     {
+        if(stateSnapshots.Count == 0)
+        {
+            return null;
+        }
         return stateSnapshots.Pop();
     }
 

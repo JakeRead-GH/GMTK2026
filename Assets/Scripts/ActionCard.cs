@@ -147,7 +147,7 @@ public sealed class ActionCard : MonoBehaviour
         RefreshVisuals();
     }
 
-    private void RefreshVisuals()
+    public void RefreshVisuals()
     {
         bool usable = isInitialized && HasUsesRemaining;
         bool pressed = usable && isSelected;
