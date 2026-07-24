@@ -3702,7 +3702,7 @@ GameObject:
   - component: {fileID: 1403692758}
   - component: {fileID: 1403692757}
   - component: {fileID: 1403692756}
-  - component: {fileID: 1403692755}
+  - component: {fileID: 1403692759}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -3730,24 +3730,6 @@ RectTransform:
   m_AnchoredPosition: {x: 874, y: -34}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1403692755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403692753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36b6cf44bd5a134d87cfb106eab6b1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UndoButton
-  undoScript: {fileID: 0}
-  button: {fileID: 1403692756}
-  backgroundImage: {fileID: 0}
-  actionIcon: {fileID: 550409777}
-  normalSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  selectedSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1403692756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3830,6 +3812,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403692753}
   m_CullTransparentMesh: 1
+--- !u!114 &1403692759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403692753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e58d4826015da4789348ac9e67330e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetButton
+  button: {fileID: 1403692756}
+  backgroundImage: {fileID: 0}
+  actionIcon: {fileID: 0}
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
 --- !u!4 &1429124471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8222460146756559573, guid: 1a5936622c9f7e643b2ac214f1f996bc, type: 3}
