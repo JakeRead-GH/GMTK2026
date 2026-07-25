@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void SetLevelInitialState()
     {
+        display.ResetLockPattern();
         display.SetDisplayPattern(LevelInfoStore.instance.InitialDisplayPattern);
         ActionCard[] actionCards = LevelInfoStore.instance.ActionCards;
         Dictionary<ActionCard, int> actionCardUsesMapping = LevelInfoStore.instance.ActionCardUsesMapping;

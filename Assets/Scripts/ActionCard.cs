@@ -32,7 +32,6 @@ public sealed class ActionCard : MonoBehaviour
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip buttonDown;
-    [SerializeField] private AudioClip outOfMovesClip;
 
 
     private DigitAction action;
@@ -159,14 +158,11 @@ public sealed class ActionCard : MonoBehaviour
     public void SetSelected(bool selected)
     {
         isSelected = selected;
-        
+
         if (selected)
         {
             SoundFXManager.instance.PlaySoundFXClip(buttonDown, transform, 1f);
         }
-       
-
-        
         RefreshVisuals();
     }
 
@@ -175,10 +171,6 @@ public sealed class ActionCard : MonoBehaviour
         print(isInitialized);
         print(HasUsesRemaining);
         bool usable = isInitialized && HasUsesRemaining;
-        if (!usable)
-        {
-            SoundFXManager.instance.PlaySoundFXClip(outOfMovesClip, transform, 1f);
-        }
         bool pressed = usable && isSelected;
 
         if (button != null) {

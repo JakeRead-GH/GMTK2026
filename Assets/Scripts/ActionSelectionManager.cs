@@ -8,6 +8,7 @@ public sealed class ActionSelectionManager : MonoBehaviour
     [Header("Apply Action")]
     [SerializeField] private AudioClip actionClip;
     [SerializeField] private AudioClip deselectClip;
+    [SerializeField] private AudioClip outOfMovesClip;
 
     private readonly List<Digit> selectedTargets = new();
 
@@ -42,6 +43,7 @@ public sealed class ActionSelectionManager : MonoBehaviour
     public void SelectDigit(Digit digit)
     {
         if (selectedCard == null || digit == null) {
+            SoundFXManager.instance.PlaySoundFXClip(outOfMovesClip, transform, 1f);
             return;
         }
         

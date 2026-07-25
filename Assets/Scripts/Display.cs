@@ -22,6 +22,14 @@ public class Display : MonoBehaviour
         }
     }
 
+    public void ResetLockPattern()
+    {
+        foreach (Digit digit in digits)
+        {
+            digit.UnlockDigit();
+        }
+    }
+
     public bool CheckSuccess()
     {
         string displayVal = string.Empty;

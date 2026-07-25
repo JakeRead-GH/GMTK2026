@@ -847,6 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActionSelectionManager
   actionClip: {fileID: 8300000, guid: 88d889cd2f666964e9f2db3deb2d7c88, type: 3}
   deselectClip: {fileID: 8300000, guid: 292dc58bf3b5b614d8be0d1a7b4eb2eb, type: 3}
+  outOfMovesClip: {fileID: 8300000, guid: e818ed1858bac34438955b4ed5986347, type: 3}
 --- !u!4 &200428210
 Transform:
   m_ObjectHideFlags: 0
